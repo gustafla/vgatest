@@ -1,7 +1,6 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-
 #include "video.h"
 #include "vtypes.h"
 #include "vectors.h"
