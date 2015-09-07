@@ -8,7 +8,6 @@ int main(int argc, char* argv[]) {
     vuint y=0;
     
     initVideo();
-    setVideoMode(0x13); /*320*200*8*/
     
     for (y=0; y<V_MODE13_H; y++) {
         for (x=0; x<V_MODE13_W; x++) {
@@ -20,7 +19,6 @@ int main(int argc, char* argv[]) {
     
     sleep(5);
     
-    setVideoMode(0x03); /*text*/
     deinitVideo();
     return 0;
 }
