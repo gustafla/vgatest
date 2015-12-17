@@ -8,9 +8,9 @@
 static struct Video* video;
 
 void setVideoMode(vbyte mode) {
-    video->intRegs.h.ah = 0x00; //mode set
+    video->intRegs.h.ah = 0x00; /*mode set*/
     video->intRegs.h.al = mode;
-    int86(0x10, &video->intRegs, &video->intRegs); //execute interrupt
+    int86(0x10, &video->intRegs, &video->intRegs); /*execute interrupt*/
 }
 
 void clearBuffer(void) {
@@ -40,28 +40,28 @@ void deinitVideo(void) {
 }
 
 void plotPixel(vuint x, vuint y, vbyte c) {
-    video->intRegs.h.ah = 0x0C; //Pixel plot
+    video->intRegs.h.ah = 0x0C; /*Pixel plot*/
     video->intRegs.h.al = c;
     video->intRegs.x.cx = x;
     video->intRegs.x.dx = y;
-    int86(0x10, &video->intRegs, &video->intRegs); //execute interrupt
+    int86(0x10, &video->intRegs, &video->intRegs); /*execute interrupt*/
 }
 
 void plotPixelVec(vec2 p, vbyte c) {
-    video->intRegs.h.ah = 0x0C; //Pixel plot
+    video->intRegs.h.ah = 0x0C; /*Pixel plot*/
     video->intRegs.h.al = c;
     video->intRegs.x.cx = p.x;
     video->intRegs.x.dx = p.y;
-    int86(0x10, &video->intRegs, &video->intRegs); //execute interrupt
+    int86(0x10, &video->intRegs, &video->intRegs); /*execute interrupt*/
 }
 
 void setPixel(vuint x, vuint y, vbyte c) {
-    vuint offset = (y<<8) + (y<<6) + x; //Shifting for speed. (256*y+64*y is same as 320*y)
+    vuint offset = (y<<8) + (y<<6) + x; /*Shifting for speed. (256*y+64*y is same as 320*y)*/
     video->buffer[offset] = c;
 }
 
 void setPixelVec(vec2 p, vbyte c) {
-    vuint offset = (p.y<<8) + (p.y<<6) + p.x; //Shifting for speed. (256*y+64*y is same as 320*y)
+    vuint offset = (p.y<<8) + (p.y<<6) + p.x; /*Shifting for speed. (256*y+64*y is same as 320*y)*/
     video->buffer[offset] = c;
 }
 

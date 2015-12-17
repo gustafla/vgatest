@@ -41,7 +41,7 @@ int  vdot2(const vec2 a, const vec2 b) {
 }
 
 vec2 vcro2(const vec2 a, const vec2 b) {
-    //TODO: implement!
+    /*TODO: implement!*/
     const vec2 v = {0,0};
     return v;
 }
@@ -108,7 +108,7 @@ int  vdot3(const vec3 a, const vec3 b) {
 }
 
 vec3 vcro3(const vec3 a, const vec3 b) {
-    //TODO: implement!
+    /*TODO: implement!*/
     const vec3 v = {0,0,0};
     return v;
 }
@@ -182,7 +182,7 @@ int  vdot4(const vec4 a, const vec4 b) {
 }
 
 vec4 vcro4(const vec4 a, const vec4 b) {
-    //TODO: implement!
+    /*TODO: implement!*/
     const vec4 v = {0,0,0,0};
     return v;
 }
