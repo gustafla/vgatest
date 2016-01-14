@@ -1,11 +1,11 @@
 #include "fnum.h"
 
-fnum float2fnum(float x) {
-    return (fnum)(x*(1l<<FNUM_N) + (x>=0 ? 0.5f : -0.5f));
+fnum float2fnum(float a) {
+    return (fnum)(a*(1l<<FNUM_N) + (a>=0 ? 0.5f : -0.5f));
 }
 
-float fnum2float(fnum x) {
-    return (float)x/(1l<<FNUM_N);
+float fnum2float(fnum a) {
+    return (float)a/(1l<<FNUM_N);
 }
 
 fnum fsqrt(fnum a) { /*Turkowski's algorith*/
@@ -26,12 +26,19 @@ fnum fsqrt(fnum a) { /*Turkowski's algorith*/
         }
     } while (count-- != 0);
     
-    return root; /*Root is 8.8?? TODO*/
+    return root;
 }
 
 fnum fmult(fnum a, fnum b) { /*TODO*/
-    register fnum ta, tb;
-    ta = a>>FNUM_N;
-    tb = b>>FNUM_N;
-    return 0l;
+    /*register fnum sourceMask, a8, b8;
+    
+    unsigned long int sourceMask = 0x00FFFF00;
+    a8 = a&sourceMask >> 8;
+    b8 = b&sourceMask >> 8;*/
+    
+    return (a>>8)*(b>>8);
+}
+
+fnum fdiv(fnum a, fnum b) {
+    return ((a << 6) / (b >> 6)) << 4;
 }

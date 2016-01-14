@@ -1,43 +1,43 @@
 #include "vectors.h"
-#include <math.h>
+#include "fnum.h"
 
 vec2 vneg2(const vec2 a) {
-    vec2 v;
+    register vec2 v;
     v.x=-a.x;
     v.y=-a.y;
     return v;
 }
 
 vec2 vsum2(const vec2 a, const vec2 b) {
-    vec2 v;
+    register vec2 v;
     v.x=a.x+b.x;
     v.y=a.y+b.y;
     return v;
 }
 
 vec2 vdif2(const vec2 a, const vec2 b) {
-    vec2 v;
+    register vec2 v;
     v.x=a.x-b.x;
     v.y=a.y-b.y;
     return v;
 }
 
 vec2 vmul2(const vec2 a, const vec2 b) {
-    vec2 v;
-    v.x=a.x*b.x;
-    v.y=a.y*b.y;
+    register vec2 v;
+    v.x=fmult(a.x,b.x);
+    v.y=fmult(a.y,b.y);
     return v;
 }
 
 vec2 vdiv2(const vec2 a, const vec2 b) {
-    vec2 v;
-    v.x=a.x/b.x;
-    v.y=a.y/b.y;
+    register vec2 v;
+    v.x=fdiv(a.x,b.x);
+    v.y=fdiv(a.y,b.y);
     return v;
 }
 
-int  vdot2(const vec2 a, const vec2 b) {
-    return (a.x*b.x + a.y*b.y);
+fnum vdot2(const vec2 a, const vec2 b) {
+    return (fmult(a.x,b.x) + fmult(a.y,b.y));
 }
 
 vec2 vcro2(const vec2 a, const vec2 b) {
@@ -47,24 +47,22 @@ vec2 vcro2(const vec2 a, const vec2 b) {
 }
 
 vec2 vnml2(const vec2 a) {
-    const int l = vlen2(a);
-    vec2 v;
-    v.x=a.x/l;
-    v.y=a.y/l;
+    register fnum l;
+    register vec2 v;
+    l = vlen2(a);
+    v.x=fdiv(a.x,l);
+    v.y=fdiv(a.y,l);
     return v;
 }
 
-int  vlen2(const vec2 a) { /*TODO: Fast inverse sqrt*/
-    float x, y;
-    x=(float)a.x;
-    y=(float)a.y;
-    return (int)sqrt(x*x + y*y);
+fnum vlen2(const vec2 a) {
+    return fsqrt(fmult(a.x, a.x) + fmult(a.y, a.y));
 }
 
 /*-------------------------------------------------------------------*/
 
 vec3 vneg3(const vec3 a) {
-    vec3 v;
+    register vec3 v;
     v.x=-a.x;
     v.y=-a.y;
     v.z=-a.z;
@@ -72,7 +70,7 @@ vec3 vneg3(const vec3 a) {
 }
 
 vec3 vsum3(const vec3 a, const vec3 b) {
-    vec3 v;
+    register vec3 v;
     v.x=a.x+b.x;
     v.y=a.y+b.y;
     v.z=a.z+b.z;
@@ -80,7 +78,7 @@ vec3 vsum3(const vec3 a, const vec3 b) {
 }
 
 vec3 vdif3(const vec3 a, const vec3 b) {
-    vec3 v;
+    register vec3 v;
     v.x=a.x-b.x;
     v.y=a.y-b.y;
     v.z=a.z-b.z;
@@ -88,23 +86,23 @@ vec3 vdif3(const vec3 a, const vec3 b) {
 }
 
 vec3 vmul3(const vec3 a, const vec3 b) {
-    vec3 v;
-    v.x=a.x*b.x;
-    v.y=a.y*b.y;
-    v.z=a.z*b.z;
+    register vec3 v;
+    v.x=fmult(a.x,b.x);
+    v.y=fmult(a.y,b.y);
+    v.z=fmult(a.z,b.z);
     return v;
 }
 
 vec3 vdiv3(const vec3 a, const vec3 b) {
-    vec3 v;
-    v.x=a.x/b.x;
-    v.y=a.y/b.y;
-    v.z=a.z/b.z;
+    register vec3 v;
+    v.x=fdiv(a.x,b.x);
+    v.y=fdiv(a.y,b.y);
+    v.z=fdiv(a.z,b.z);
     return v;
 }
 
-int  vdot3(const vec3 a, const vec3 b) {
-    return (a.x*b.x + a.y*b.y + a.z*b.z);
+fnum vdot3(const vec3 a, const vec3 b) {
+    return (fmult(a.x,b.x) + fmult(a.y,b.y) + fmult(a.z,b.z));
 }
 
 vec3 vcro3(const vec3 a, const vec3 b) {
@@ -114,26 +112,23 @@ vec3 vcro3(const vec3 a, const vec3 b) {
 }
 
 vec3 vnml3(const vec3 a) {
-    const int l = vlen3(a);
-    vec3 v;
-    v.x=a.x/l;
-    v.y=a.y/l;
-    v.z=a.z/l;
+    register fnum l;
+    register vec3 v;
+    l = vlen3(a);
+    v.x=fdiv(a.x,l);
+    v.y=fdiv(a.y,l);
+    v.z=fdiv(a.z,l);
     return v;
 }
 
-int  vlen3(const vec3 a) { /*TODO: Fast inverse sqrt*/
-    float x, y, z;
-    x=(float)a.x;
-    y=(float)a.y;
-    z=(float)a.z;
-    return (int)sqrt(x*x + y*y + z*z);
+fnum vlen3(const vec3 a) {
+    return fsqrt(fmult(a.x, a.x) + fmult(a.y, a.y) + fmult(a.z, a.z));
 }
 
 /*-------------------------------------------------------------------*/
 
 vec4 vneg4(const vec4 a) {
-    vec4 v;
+    register vec4 v;
     v.x=-a.x;
     v.y=-a.y;
     v.z=-a.z;
@@ -142,7 +137,7 @@ vec4 vneg4(const vec4 a) {
 }
 
 vec4 vsum4(const vec4 a, const vec4 b) {
-    vec4 v;
+    register vec4 v;
     v.x=a.x+b.x;
     v.y=a.y+b.y;
     v.z=a.z+b.z;
@@ -151,7 +146,7 @@ vec4 vsum4(const vec4 a, const vec4 b) {
 }
 
 vec4 vdif4(const vec4 a, const vec4 b) {
-    vec4 v;
+    register vec4 v;
     v.x=a.x-b.x;
     v.y=a.y-b.y;
     v.z=a.z-b.z;
@@ -160,25 +155,25 @@ vec4 vdif4(const vec4 a, const vec4 b) {
 }
 
 vec4 vmul4(const vec4 a, const vec4 b) {
-    vec4 v;
-    v.x=a.x*b.x;
-    v.y=a.y*b.y;
-    v.z=a.z*b.z;
-    v.w=a.w*b.w;
+    register vec4 v;
+    v.x=fmult(a.x,b.x);
+    v.y=fmult(a.y,b.y);
+    v.z=fmult(a.z,b.z);
+    v.w=fmult(a.w,b.w);
     return v;
 }
 
 vec4 vdiv4(const vec4 a, const vec4 b) {
-    vec4 v;
-    v.x=a.x/b.x;
-    v.y=a.y/b.y;
-    v.z=a.z/b.z;
-    v.w=a.w/b.w;
+    register vec4 v;
+    v.x=fdiv(a.x,b.x);
+    v.y=fdiv(a.y,b.y);
+    v.z=fdiv(a.z,b.z);
+    v.w=fdiv(a.w,b.w);
     return v;
 }
 
-int  vdot4(const vec4 a, const vec4 b) {
-    return (a.x*b.x + a.y*b.y + a.z*b.z + a.w*b.w);
+fnum vdot4(const vec4 a, const vec4 b) {
+    return (fmult(a.x,b.x) + fmult(a.y,b.y) + fmult(a.z,b.z) + fmult(a.w,b.w));
 }
 
 vec4 vcro4(const vec4 a, const vec4 b) {
@@ -188,20 +183,16 @@ vec4 vcro4(const vec4 a, const vec4 b) {
 }
 
 vec4 vnml4(const vec4 a) {
-    const int l = vlen4(a);
-    vec4 v;
-    v.x=a.x/l;
-    v.y=a.y/l;
-    v.z=a.z/l;
-    v.w=a.w/l;
+    register fnum l;
+    register vec4 v;
+    l = vlen4(a);
+    v.x=fdiv(a.x,l);
+    v.y=fdiv(a.y,l);
+    v.z=fdiv(a.z,l);
+    v.w=fdiv(a.w,l);
     return v;
 }
 
-int  vlen4(const vec4 a) { /*TODO: Fast inverse sqrt*/
-    float x, y, z, w;
-    x=(float)a.x;
-    y=(float)a.y;
-    z=(float)a.z;
-    w=(float)a.w;
-    return (int)sqrt(x*x + y*y + z*z + w*w);
+fnum vlen4(const vec4 a) {
+    return fsqrt(fmult(a.x, a.x) + fmult(a.y, a.y) + fmult(a.z, a.z) + fmult(a.w, a.w));
 }

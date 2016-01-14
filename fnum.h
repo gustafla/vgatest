@@ -7,17 +7,17 @@
 
 #define FNUM_N 16
 
-typedef unsigned long int fnum;
+typedef long int fnum;
 
 fnum float2fnum(float x);
 float fnum2float(fnum x);
-
 
 /* Math */
 
 #define FNUM_PI (fnum)(3.1415f*(1l<<FNUM_N))
 
-fnum fmult(fnum a, fnum b)
+fnum fmult(fnum a, fnum b);
+fnum fdiv(fnum a, fnum b);
 fnum fsqrt(fnum a);
 
 #endif
