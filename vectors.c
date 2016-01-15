@@ -29,6 +29,13 @@ vec2 vmul2(const vec2 a, const vec2 b) {
     return v;
 }
 
+vec2 vscl2(const vec2 a, const fnum b) {
+    register vec2 v;
+    v.x=fmult(a.x,b);
+    v.y=fmult(a.y,b);
+    return v;
+}
+
 vec2 vdiv2(const vec2 a, const vec2 b) {
     register vec2 v;
     v.x=fdiv(a.x,b.x);

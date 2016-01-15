@@ -25,6 +25,7 @@ vec2 vneg2(vec2 a);
 vec2 vsum2(vec2 a, vec2 b);
 vec2 vdif2(vec2 a, vec2 b);
 vec2 vmul2(vec2 a, vec2 b);
+vec2 vscl2(vec2 a, fnum b);
 vec2 vdiv2(vec2 a, vec2 b);
 fnum vdot2(vec2 a, vec2 b);
 vec2 vcro2(vec2 a, vec2 b);

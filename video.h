@@ -21,6 +21,7 @@ void deinitVideo(void);
 void plotPixel(vuint x, vuint y, vbyte c);
 void plotPixelVec(vec2 p, vbyte c);
 void setPixel(vuint x, vuint y, vbyte c);
+void setPixelUnbuffered(vuint x, vuint y, vbyte c);
 void setPixelVec(vec2 p, vbyte c);
 
 void blitBuffer(void);

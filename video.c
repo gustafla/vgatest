@@ -60,6 +60,11 @@ void setPixel(vuint x, vuint y, vbyte c) {
     video->buffer[offset] = c;
 }
 
+void setPixelUnbuffered(vuint x, vuint y, vbyte c) {
+    vuint offset = (y<<8) + (y<<6) + x; /*Shifting for speed. (256*y+64*y is same as 320*y)*/
+    video->VGA[offset] = c;
+}
+
 void setPixelVec(vec2 p, vbyte c) {
     vuint offset = (p.y<<8) + (p.y<<6) + p.x; /*Shifting for speed. (256*y+64*y is same as 320*y)*/
     video->buffer[offset] = c;
